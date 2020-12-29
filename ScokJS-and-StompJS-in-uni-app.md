@@ -55,11 +55,11 @@ onLoad() {
 
 心想着，这么简单的活我要了一整天，今天看来又能愉快的划水摸鱼了，开开心心的在开发工具中运行我们的程序。
 
-![image-20201229151129237](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229151129237.png)
+![image-20201229151129237](./assets/ScokJS-and-StompJS-in-uni-app/image-20201229151129237.png)
 
 然后我一脸懵的看着这个调试工具，我的socket连接呢？？？算了，一次不成功也没啥，好事多磨嘛，先去console里面看看有没有什么异常。
 
-![image-20201229161800737](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229161800737.png)
+![image-20201229161800737](./assets/ScokJS-and-StompJS-in-uni-appimage-20201229161800737.png)
 
 UNIAPP里面调用原生JS的DOM操作？？？作死也不是这样作死的好吗？谁都知道小程序里面没有原生的DOM操作！！！不过，额，好像这两个库也没说支持小程序把....作孽啊！！！
 
@@ -103,7 +103,7 @@ const websocket = new SockJS("ws://websocket", [], { transports: "websocket" });
 
 突然有一种强烈的感觉，这玩意不会这么简单，算了，先看看效果
 
-![image-20201229151453955](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229151453955.png)
+![image-20201229151453955](./assets/ScokJS-and-StompJS-in-uni-appimage-20201229151453955.png)
 
 叫我百晓生？这是什么鬼报错，能说点人话不？
 
@@ -131,7 +131,7 @@ const websocket = new SockJS("ws://websocket", [], { transports: "websocket" });
 
 再次调试
 
-![image-20201229155709042](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229155709042.png)
+![image-20201229155709042](./assets/ScokJS-and-StompJS-in-uni-appimage-20201229155709042.png)
 
 又是这坑爹的到报错，不过还好我们看到了，已经开始连接WebSocket服务器，只不过在连接的时候出现了异常。
 
@@ -186,7 +186,7 @@ console.log(stompClient)
 
 继续看看表现
 
-![image-20201229171142403](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229171142403.png)
+![image-20201229171142403](./assets/ScokJS-and-StompJS-in-uni-appimage-20201229171142403.png)
 
 我们都知道，WebSocket有用onopen，onmessage方法，但是这里为什么是null和空函数呢？？？
 
@@ -218,7 +218,7 @@ console.log(window)
 console.log(window.websocket)
 ```
 
-![image-20201229172541030](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229172541030.png)
+![image-20201229172541030](./assets/ScokJS-and-StompJS-in-uni-appimage-20201229172541030.png)
 
 证明在小程序环境下依旧有window对象，但是无window.websocket，这样就好解决了
 
@@ -304,7 +304,7 @@ global.WebSocket = window.WebSocket = WebSocketPolyfill;
 
 再次运行程序
 
-![image-20201229173239222](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229173239222.png)
+![image-20201229173239222](./assets/ScokJS-and-StompJS-in-uni-appimage-20201229173239222.png)
 
 我们通过Stompjs看到了这段debug信息
 
@@ -329,7 +329,7 @@ stompClient.connect(
 
 双手合十，祈祷，一遍过，麻利麻利哄
 
-![image-20201229173646367](C:\Users\Z\AppData\Roaming\Typora\typora-user-images\image-20201229173646367.png)
+![image-20201229173646367](./assets/ScokJS-and-StompJS-in-uni-appimage-20201229173646367.png)
 
 /(ㄒoㄒ)/~~，可算是成功了
 
